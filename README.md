@@ -8,7 +8,7 @@ Zadanie polega implementacji funkcji
  ```NameHandler```, która na podstawie żądania będzie dodawać do naszej struktury `Server`
  nowego użytkownika na podstawie adresu.
  
- ###Przykład
+ ### Przykład
   
  request `localhost:8000/grzegorz/kuli` utworzy instancje struktury  
  ```go
