@@ -1,6 +1,13 @@
+# Arxen demonstracja
 
+Powyższe repozytoroum zawiera zadania oraz prezentacje dotyczące projektu [arxen](https://github.com/bartQu9/arxen).
+W katalogu `zadania` znajduje się szereg plików których nazwy oznaczają numer zadania. 
+Poprawność wykonania każdego zadania można sprawdzić przez wywołanie testu, a jak to zrobić jest napisane 
+w sekcji Zadania. 
 
-# Zadanie x
+## Zadania
+
+### Zadanie x: Prosty serwer http
 W pliku ```exc10.go``` znajduje się przykładowa implementacja serwera z request routerem. Dzięki temu
 można odwiedzać dynamicznie generowane na podstawie URL podstrony naszej domeny (podobne zagadnienie pojawiło się 
 na WWWiJS gdzie odpowiedzialny za to był serwer Apache).  
@@ -8,7 +15,7 @@ Zadanie polega implementacji funkcji
  ```NameHandler```, która na podstawie żądania będzie dodawać do naszej struktury `Server`
  nowego użytkownika na podstawie adresu.
  
- ### Przykład
+ #### Przykład
   
  request `localhost:8000/grzegorz/kuli` utworzy instancje struktury  
  ```go
@@ -19,7 +26,7 @@ PersonalInformation {
 ```
 Następnie doda utworzony element do tablicy `s.usersList`.
 
-### Test
+#### Test
 W celu przerestowania kodu należy:
 ```bash
 cd zadania
