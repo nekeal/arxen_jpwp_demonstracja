@@ -61,57 +61,53 @@ func PrimesCounterWorker(start uint64, limit uint64, result chan uint64, err cha
 }
 
 func PrimesCounterHandler(start uint64, limit uint64) (uint64, error) {
+	// TODO if function is implemented delete line below
+	panic("implement me")
 
 	// validate the range
 	if start >= limit {
 		return 0, errors.New("start must be less than the limit")
 	}
 
-	// number of primes in slice [start, limit]
-	numberOfPrimes := uint64(0)
+	// TODO declare variable storing number of primes in range
 
 	numOfWorkers := 0
 
+	// sync group is optional
 	wg := sync.WaitGroup{}
-	results := make(chan uint64, numOfWorkers)
-	errs := make(chan error, numOfWorkers)
 
+	errs := make(chan error, numOfWorkers)
+	// TODO create new channel used by PrimesCounterWorker to return results (similar to errs defined above)
+
+	// used for defining (not directly) how many goroutines will be generated
 	workersResolution := uint64(500)
 
-	//for i := 1; i <= numOfWorkers; i++ {
-	//	st := uint64(uint64(i)*(limit-start)/uint64(numOfWorkers) + start)
-	//	var end uint64
-	//	if end = uint64(uint64(i+1)*(limit-start)/uint64(numOfWorkers) + limit); end > limit {
-	//		limit = end
-	//	}
-	//	wg.Add(1)
-	//	go PrimesCounterWorker(st, end, results, errs, &wg)
-	//}
-
+	// create numOfWorkers goroutines counting primes
 	for st := start; st < limit; st += workersResolution {
-		numOfWorkers += 1
+		// TODO change value of numOfWorkers
+
+		// end of range for particular goroutine
 		var end uint64
 		if st+workersResolution > limit {
 			end = limit
 		} else {
-			end = st +workersResolution
+			end = st + workersResolution
 		}
 		wg.Add(1)
-		go PrimesCounterWorker(st, end, results, errs, &wg)
+		// TODO run PrimesCounterWorker as goroutine
+		println(end)
 	}
 
-	wg.Wait()
-
+	// listen for every new element in each channel and handle it
+	// if any error occurs return error
+	// if every worker is done (number of results == numberOfWorkers) return answer
 	for {
 		select {
 		case err := <-errs:
 			return 0, err
-		case res := <-results:
-			numberOfPrimes += res
-			numOfWorkers--
-			if numOfWorkers == 0 {
-				return numberOfPrimes, nil
-			}
+			// TODO add next case, that will handle results as follows:
+			// for each result add its value to some sum variable
+			// if it number of results exceeds number of goroutines return sum
 		}
 	}
 }

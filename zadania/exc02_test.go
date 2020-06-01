@@ -9,16 +9,16 @@ import (
 )
 
 func TestRouter(t *testing.T) {
-	if testing.Short() {
-		t.Skip("skipping test in short mode.")
-	}
+	//if testing.Short() {
+	//	t.Skip("skipping test in short mode.")
+	//}
 
 	tests := []struct {
 		name    string
 		surname string
-		want    PersonalInformation
+		want    *PersonalInformation
 	}{
-		{name: "admin", surname: "adnim1", want: PersonalInformation{
+		{name: "admin", surname: "admin1", want: &PersonalInformation{
 			Name:    "admin",
 			Surname: "admin1",
 		}},
